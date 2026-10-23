@@ -1,0 +1,9 @@
+# The apps on Home, in order. One package name per line. Apps that aren't installed are skipped.
+# Without a list, Home shows these, then apps you installed yourself, up to twelve.
+# Not sure of a package name? Ask Claude: "What's the package name of <app> on my tablet?"
+com.android.chrome
+com.google.android.youtube
+com.netflix.mediaclient
+com.amazon.kindle
+com.spotify.music
+com.google.android.apps.docs

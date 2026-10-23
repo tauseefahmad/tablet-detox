@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tabletdetox.home" android:versionCode="1" android:versionName="1.0.0">
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="34" />
+    <!-- Screen time on Home. Granted by install.sh (appops), or by you in Settings > Usage access. -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <!-- Lets "Uninstall" in the app menu open Android's uninstall prompt. -->
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- Android 11+ only shows apps a home screen asks to see. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- The tablet's own essentials, found by role so they work on any brand. -->
+        <intent><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.APP_CALENDAR" /></intent>
+        <intent><action android:name="android.intent.action.SHOW_ALARMS" /></intent>
+        <intent><action android:name="android.settings.USAGE_ACCESS_SETTINGS" /></intent>
+        <!-- Screen time pages: Digital Wellbeing (Pixel and most tablets) and Samsung's. -->
+        <package android:name="com.google.android.apps.wellbeing" />
+        <package android:name="com.samsung.android.forest" />
+    </queries>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <application android:label="Calm Home" android:allowBackup="false"
+        android:theme="@android:style/Theme.Material.NoActionBar">
+        <activity android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask" android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true" android:excludeFromRecents="true"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|smallestScreenSize|screenLayout|uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
